@@ -9,19 +9,23 @@ int main(){
     #define M 7
     int i,j;
     int mt[N][M];
+    int *puntero = mt;
+    
     for(i = 0;i<N; i++)
     {
         for(j = 0;j<M; j++)
         {
-            mt[i][j]=1+rand()%100;
+            *puntero=1+rand()%100;
             
-            if (mt[i][j]<=9)
+            if (*puntero<=9)
             {
-                printf("%i  ", mt[i][j]);
+                printf("%i  ", *puntero);
             }else
             {
-                printf("%i ", mt[i][j]);
+                printf("%i ", *puntero);
             }
+
+            puntero++;
         }
 
             printf("\n");
