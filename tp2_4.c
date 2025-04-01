@@ -24,7 +24,10 @@ int main()
         pc[i] = generarCompu(pc[i]); 
         cantidad = i;
     }
-    printf("Bienvenidos al himalaya:\n\n Escriba el numero correspondiente a la opcion que se desee realizar:\n 1 listar PCs \n 2 mostrar PC mas vieja \n 3 mostrar PC mas veloz\n");
+    while (trigger!=0)
+    {
+    
+    printf("Bienvenidos al himalaya:\n\n Escriba el numero correspondiente a la opcion que se desee realizar:\n 1 Listar PCs \n 2 Mostrar PC mas vieja \n 3 Mostrar PC mas veloz\n 0 Salir del programa");
     scanf("%i", &trigger);
 
     switch (trigger)
@@ -39,7 +42,10 @@ int main()
 
             break;
         default:
+        printf("ERROR: Opción no válida\n");
             break;
+    }
+        /* code */
     }
 
 
