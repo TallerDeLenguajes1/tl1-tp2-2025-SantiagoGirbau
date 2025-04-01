@@ -1,0 +1,8 @@
+2)
+f)
+No puedo ver el archivo tp2_1_2.c ya que nos cambiamos a un branch en el que aún no existe. 
+
+Se puede observar que el main ahora tiene un nuevo punto en el futuro y la rama Opción_2 quedó abierta.
+
+Luego de realizar el merge, la rama Opción_2 se volvió a unir con la de main y volvimos a tener solo una rama de trabajo.
+

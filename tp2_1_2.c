@@ -3,7 +3,7 @@
 #include "math.h"
 // codigo a completar
 
-int main(int argc, char const *argv[])
+int main()
 {
     #define N 20
     int i;
