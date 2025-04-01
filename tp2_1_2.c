@@ -12,8 +12,9 @@ int main(int argc, char const *argv[])
 
     for(i = 0; i < N; i++)
     {
-        vt[i] = 1 + rand() % 100;
-        printf("%f", vt[i]);
+        *puntero = 1 + rand() % 100;
+        printf(" %f ", vt[i]);
+        puntero++;
     }
 
         return 0;
