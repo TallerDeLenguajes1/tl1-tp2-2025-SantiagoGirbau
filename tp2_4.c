@@ -41,7 +41,7 @@ int main()
                 mostrarMasVieja(pc, cantidad);
                 break;
             case 3:
-
+                mostrarMasVeloz(pc, cantidad);
                 break;
             default:
             printf("ERROR: Opción no válida\n");
@@ -85,7 +85,7 @@ void mostrarMasVieja(compu pc[], int cantidad){
         if (pc[i].anio<masVieja.anio)
         {
             masVieja=pc[i];
-        }
+        }   
     }
     printf("La computadora más vieja es:\n\n");
     listarPCs(&masVieja, 1);
@@ -93,6 +93,17 @@ void mostrarMasVieja(compu pc[], int cantidad){
 
 void mostrarMasVeloz(compu pc[], int cantidad){
 
+    compu masVeloz;
+    masVeloz.anio=pc[0].anio;
+    masVeloz=pc[0];
 
-
+    for (short i = 0; i < cantidad; i++)
+    {
+        if (pc[i].velocidad>masVeloz.velocidad)
+        {
+            masVeloz=pc[i];
+        }
+    }
+    printf("La computadora más veloz es:\n\n");
+    listarPCs(&masVeloz, 1);
 }
