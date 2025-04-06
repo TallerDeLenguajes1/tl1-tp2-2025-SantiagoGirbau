@@ -2,6 +2,7 @@
 #include "stdio.h"
 #include "math.h"
 #include "time.h"
+#include "string.h"
 
     struct compu {
  int velocidad; // Velocidad de procesamiento en GHz (valor entre 1 y 3)
@@ -11,57 +12,51 @@
 }typedef compu;
 
 compu generarCompu(compu pc1);
-void listarPCs (compu pc[], int i);
+void listarPCs (compu pc[], int cantidad);
+void mostrarMasVieja(compu pc[], int cantidad);
+void mostrarMasVeloz(compu pc[], int cantidad);
 
 int main()
 {
     srand(time(NULL));
-    
+    char tipos[6][10] = {"Intel", "Ryzen", "Celeron", "Athlon", "Core", "Pentium"};
     compu pc[5];
-    int trigger, cantidad;
+    int trigger, cantidad=0;
     for (int i = 0; i < 5; i++)
     {
-        pc[i] = generarCompu(pc[i]); 
-        cantidad = i;
+        pc[i] = generarCompu(pc[i]);
+        pc[i].tipo_cpu=tipos[rand()%6];
+        cantidad++;
     }
-    while (trigger!=0)
-    {
     
-    printf("Bienvenidos al himalaya:\n\n Escriba el numero correspondiente a la opcion que se desee realizar:\n 1 Listar PCs \n 2 Mostrar PC mas vieja \n 3 Mostrar PC mas veloz\n 0 Salir del programa");
-    scanf("%i", &trigger);
+    do{
+        printf("Bienvenidos al himalaya:\n\n Escriba el numero correspondiente a la opcion que se desee realizar:\n 1 Listar PCs \n 2 Mostrar PC mas vieja \n 3 Mostrar PC mas veloz\n 0 Salir del programa\n\n");
+        scanf("%i", &trigger);
+        switch (trigger)
+        {
+            case 1:
+                listarPCs(pc, cantidad);
+                break;
+            case 2:
+                mostrarMasVieja(pc, cantidad);
+                break;
+            case 3:
 
-    switch (trigger)
-    {
-        case 1:
-            listarPCs(pc, cantidad);
-            break;
-        case 2:
-
-            break;
-        case 3:
-
-            break;
-        default:
-        printf("ERROR: Opción no válida\n");
-            break;
-    }
-        /* code */
-    }
-
-
-
-
-    
-
+                break;
+            default:
+            printf("ERROR: Opción no válida\n");
+                break;
+        }
+        
+    }while (trigger!=0);
     return 0;
 }
 
 compu generarCompu(compu pc1){
-    char tipos[6][10] = {"Intel", "Ryzen", "Celeron", "Athlon", "Core", "Pentium"};
+    
     pc1.velocidad= 1+rand()%3;
     pc1.anio= 2015+rand()%10;
     pc1.cantidad_nucleos=1+rand()%8;
-    pc1.tipo_cpu=tipos[1+rand()%6];
     return(pc1);
 }
 
@@ -69,10 +64,35 @@ void listarPCs (compu pc[], int cantidad){
 
     for (short i = 0; i < cantidad; i++)
     {
-        printf("\n  -Compu numero %i \n", (i+1));
+        printf("   -----Compu------\n");
         printf("Velocidad: %i GHz\n", pc[i].velocidad);
         printf("Anio: %i\n", pc[i].anio);
         printf("Cantidad de nucleos: %i\n", pc[i].cantidad_nucleos);
-        printf("Tipo de la CPU: %i\n", pc[i].tipo_cpu);
+        printf("Tipo de la CPU: ");
+        puts(pc[i].tipo_cpu);
+        printf("\n");
+        
     }
+}
+
+void mostrarMasVieja(compu pc[], int cantidad){
+    compu masVieja;
+    masVieja.anio=pc[0].anio;
+    masVieja=pc[0];
+
+    for (short i = 0; i < cantidad; i++)
+    {
+        if (pc[i].anio<masVieja.anio)
+        {
+            masVieja=pc[i];
+        }
+    }
+    printf("La computadora más vieja es:\n\n");
+    listarPCs(&masVieja, 1);
+}
+
+void mostrarMasVeloz(compu pc[], int cantidad){
+
+
+
 }
